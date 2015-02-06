@@ -1,0 +1,21 @@
+=pod
+
+=head1 NAME
+
+bb2koha - Sync data from "Base Bibliotek" to Koha. 
+
+=head1 DESCRIPTION
+
+"Base Bibliotek" is a database of contact information for Norwegian libraries,
+maintained by the Norwegian National Library. 
+
+This script takes data from "Base Bibliotek" in XML format and pushes it into
+Koha, the free software ILS. 
+
+=head1 DOCUMENTATION
+
+Run the following command to see more documentation:
+
+    perldoc bb2koha.pl
+
+=cut

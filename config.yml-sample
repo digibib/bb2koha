@@ -1,0 +1,27 @@
+---
+
+# Where should the script store/look for files from BaseBibliotek? 
+datadir: '/home/me/bb/'
+
+# Where can the script talk to the API? 
+endpoint: 'http://localhost:8081'
+
+# Username and password for talking to the API
+# See http://wiki.koha-community.org/wiki/Koha_/svc/_HTTP_API for details
+userid: 'demo'
+password: 'demo'
+
+# Which branch should libraries from BB be connected to
+branchcode: 'CPL'
+
+# Which category should libraries from BB be put in
+# FIXME This should probably be more flexible
+categorycode: 'L'
+
+# Which field should be used to check if a library is already present in Koha
+matchfield: cardnumber
+
+# USername and password for fetching data files from Base Bibliotek
+# Credentials are handed out by the Norwegian National Library
+bbuser: xyz
+bbpass: zyx
