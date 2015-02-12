@@ -63,7 +63,7 @@ my $ua = LWP::UserAgent->new();
 $ua->cookie_jar({});
 
 # Get options
-my ( $configfile, $mapfile, $date, $full, $file, $limit, $verbose, $debug ) = get_options();
+my ( $configfile, $mapfile, $date, $full, $file, $delete, $limit, $verbose, $debug ) = get_options();
 
 =head1 CONFIGURATION FILES
 
@@ -178,8 +178,14 @@ $importer->take( $limit )->each( sub {
 
 } );
 
+# Summary
 if ( $verbose ) {
     say "$records_count of " . $importer->count . " records processed";
+}
+
+# Delete the file we just imported, if we were asked to
+if ( $delete ) {
+    unlink $bbfile or warn "Could not delete $bbfile: $!";
 }
 
 =head1 SUBROUTINES
@@ -332,7 +338,11 @@ do not use this option, but give the path to the file with the --file option.
 Import a specific BB file (that has already been downloaded). This can be
 either a daily "diff" file or a full file.
 
-Do not combine this option with --date. 
+Do not combine this option with --date.
+
+=item B<--delete>
+
+Delete the file that was used before the script ends.
 
 =item B<-l, --limit>
 
@@ -366,6 +376,7 @@ sub get_options {
     my $date       = '';
     my $full       = '';
     my $file       = '';
+    my $delete     = '';
     my $limit      = '', 
     my $verbose    = '';
     my $debug      = '';
@@ -377,6 +388,7 @@ sub get_options {
         'd|date=s'       => \$date,
         'full'           => \$full,   
         'f|file=s'       => \$file,
+        'delete'         => \$delete,
         'l|limit=i'      => \$limit,
         'v|verbose'      => \$verbose,
         'debug'          => \$debug,
@@ -390,7 +402,7 @@ sub get_options {
     pod2usage( -msg => "\nInvalid date format: $date\n",                       -exitval => 1 ) if $date ne '' && $date !~ /^20\d\d-[01]\d-[0123]\d$/;
     pod2usage( -msg => "\nThe file $file does not exist\n",                    -exitval => 1 ) if $file ne '' && !-e $file;
 
-    return ( $configfile, $mapfile, $date, $full, $file, $limit, $verbose, $debug );
+    return ( $configfile, $mapfile, $date, $full, $file, $delete, $limit, $verbose, $debug );
 
 }
 
