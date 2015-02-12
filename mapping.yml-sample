@@ -4,8 +4,7 @@ surname:    inst
 address:    padr
 zipcode:    ppostnr
 city:       ppoststed
-# There is a bug in the patch that makes fields with an underscore break the upsert
-# B_address:  vadr
-# B_zipcode:  vpostnr
-# B_city:     vpoststed
+B_address:  vadr
+B_zipcode:  vpostnr
+B_city:     vpoststed
 email: epost_adr
