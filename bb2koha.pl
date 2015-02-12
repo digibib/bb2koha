@@ -321,9 +321,16 @@ Dates should be given in the format YYYY-MM-DD.
 
 Do not combine this option with --file. 
 
+=item B<--full>
+
+Download and ingest F<bb-full.xml>. If the file can not be downloaded the script
+will die. If you have already downloaded F<bb-full.xml> and want to use that,
+do not use this option, but give the path to the file with the --file option.
+
 =item B<-f, --file>
 
-Import a specific BB file (that has already been downloaded).
+Import a specific BB file (that has already been downloaded). This can be
+either a daily "diff" file or a full file.
 
 Do not combine this option with --date. 
 
