@@ -361,8 +361,8 @@ Prints this help message and exits.
 sub get_options {
 
     # Options
-    my $configfile = '';
-    my $mapfile    = '';
+    my $configfile = './config.yml';
+    my $mapfile    = './mapping.yml';
     my $date       = '';
     my $full       = '';
     my $file       = '';
