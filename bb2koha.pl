@@ -131,8 +131,8 @@ my $importer = Catmandu::Importer::XML->new(
     'path' => '/BaseBibliotek/record', # XML path
 );
 
-# Authenticate with BB
-my $auth_resp = make_request({
+# Authenticate with Koha
+my $auth_resp = make_request_to_koha({
     'diag'    => 'Authenticate',
     'urlfrag' => 'authentication',
     'data'    => { 
@@ -165,7 +165,7 @@ $importer->take( $limit )->each( sub {
     $librarydata->{ 'categorycode' } = $config->{ 'categorycode' };
     say Dumper $librarydata if $debug;
     
-    my $resp = make_request({
+    my $resp = make_request_to_koha({
         'diag'    => 'Upsert',
         'urlfrag' => 'members/upsert',
         'data'    => $librarydata
@@ -217,7 +217,7 @@ sub get_file_from_bb {
 
 }
 
-=head2 make_request
+=head2 make_request_to_koha
 
 Make a request to the API, passing along any data and printing the result
 
@@ -253,7 +253,7 @@ request, suitable for reporting to the user and/or for logging
 
 =cut
 
-sub make_request {
+sub make_request_to_koha {
 
     my ( $args ) = @_;
     
