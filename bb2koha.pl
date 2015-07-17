@@ -97,7 +97,9 @@ say "Read $mapfile" if $verbose;
 
 # Determine the BB file to read
 my $bbfile = '';
-if ( $full ) {
+if ( $file ) {
+    $bbfile = $file;
+} elsif ( $full ) {
     # We want the full file
     $bbfile = $config->{'datadir'} . 'bb-full.xml';
     say "Going to use $bbfile" if $verbose;
